@@ -32,16 +32,17 @@ set dest=%2
 if not exist "%dest%" md "%dest%"
 
 :: Creates Temporary Directory ::
-md tmp >nul
+md %file_dir%\tmp >nul
 
 :: Writes code into tmp\unzipper.ps1 ::
-echo expand-archive -path '%zip%' -destinationpath '%dest%' > %file_dir%\tmp\unzipper.ps1
+echo expand-archive -path '%zip%' -destinationpath '%dest%' -Force > %file_dir%\tmp\unzipper.ps1
 
 :: Runs Unzipper ::
 powershell.exe -File %file_dir%\tmp\unzipper.ps1
 
 :: Deletes Temporary Files ::
 del /F /Q %file_dir%\tmp\unzipper.ps1
-rd /s /q tmp
+
+rd /s /q %file_dir%\tmp
 
 :eof
