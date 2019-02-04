@@ -6,17 +6,30 @@ set file_dir=%~dp0
 :: Turns on powershell scripts for current user ::
 powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
 
-IF [%1] == [] goto :ask
-IF [%2] == [] goto :ask
+IF [%1] == [] (
+	echo Format:
+	echo.
+	echo path\unzip.cmd zip_file_path destination
+	echo.
+	echo Press any button to continue
+	pause >nul
+	goto :eof
+)
+
+IF [%2] == [] (
+	echo Format:
+	echo.
+	echo path\unzip.cmd zip_file_path destination
+	echo.
+	echo Press any button to continue
+	pause >nul
+	goto :eof
+)
 
 set zip=%1
 set dest=%2
 
-goto :zip
-:ask
-
-set /p zip=Path to Zip: 
-set /p dest= Path to Destination: 
+if not exist "%dest%" md "%dest%"
 
 :: Creates Temporary Directory ::
 md tmp >nul
@@ -30,3 +43,5 @@ powershell.exe -File %file_dir%\tmp\unzipper.ps1
 :: Deletes Temporary Files ::
 del /F /Q %file_dir%\tmp\unzipper.ps1
 rd /s /q tmp
+
+:eof

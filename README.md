@@ -8,9 +8,7 @@ Works only on .zip files
   
 ``unzip.cmd path_to_zip_file destination``  
   
-If values are not given, it will automatically ask for them.  
-  
-It also asks for values, if the files is opened.  
+If values are not given, it will display the format in the console.  
   
 # Example:  
   
