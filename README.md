@@ -16,3 +16,9 @@ It also asks for values, if the files is opened.
   
 ``unzip.cmd %userprofile%\Desktop\download.zip %userprofile%\Desktop\download``  
 >> unzips download.zip into %userprofile%\Desktop\download  
+  
+# More Info  
+ 
+If you want to download a file first, without installing any software,  
+you can use a Minimalistic Pure Windows File Downloader, which can be used to download any file,  
+from any website (for example github repos)  
