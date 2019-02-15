@@ -6,13 +6,15 @@ Works only on .zip files
   
 # Format:  
   
-``unzip.cmd path_to_zip_file destination``  
+``"path\unzip.cmd" "path_to_zip_file" "destination"``  
   
 If values are not given, it will display the format in the console.  
   
+Parameters should be given with Quotes!  
+  
 # Example:  
   
-``unzip.cmd %userprofile%\Desktop\download.zip %userprofile%\Desktop\download``  
+``"path\unzip.cmd" "%userprofile%\Desktop\download.zip" "%userprofile%\Desktop\download"``  
 >> unzips download.zip into %userprofile%\Desktop\download  
   
 # More Info  
