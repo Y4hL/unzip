@@ -44,7 +44,7 @@ if not exist "%unzip_dest%" md "%unzip_dest%"
 md "%~dp0\%unzip_add_dir%" >nul
 
 :: Writes code into %add_dir%\unzipper.ps1 ::
-echo expand-archive -path '%unzip_zip%' -destinationpath '%unzip_dest%' -Force > %~dp0\%add_dir%\unzipper.ps1
+echo expand-archive -path '%unzip_zip%' -destinationpath '%unzip_dest%' -Force > "%~dp0\%add_dir%\unzipper.ps1"
 
 :: Runs Unzipper ::
 powershell.exe -File "%~dp0\%unzip_add_dir%\unzipper.ps1"
