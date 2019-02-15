@@ -1,11 +1,8 @@
 @echo off
 title Y4hL/unzip
 
-:: Gets Files Path ::
-set file_dir=%~dp0
-
 :: Creates random number for folder name ::
-set add_dir=%random%
+set unzip_add_dir=%random%
 
 :: Turns on powershell scripts for current user ::
 powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
@@ -41,21 +38,21 @@ set unzip_zip=%unzip_zip:"=%
 set unzip_dest=%unzip_dest:'=%
 set unzip_dest=%unzip_dest:"=%
 
-if not exist "%dest%" md "%dest%"
+if not exist "%unzip_dest%" md "%unzip_dest%"
 
 :: Creates Temporary Directory ::
-md "%file_dir%\%add_dir%" >nul
+md "%~dp0\%unzip_add_dir%" >nul
 
 :: Writes code into %add_dir%\unzipper.ps1 ::
-echo expand-archive -path '%unzip_zip%' -destinationpath '%unzip_dest%' -Force > %file_dir%\%add_dir%\unzipper.ps1
+echo expand-archive -path '%unzip_zip%' -destinationpath '%unzip_dest%' -Force > %~dp0\%add_dir%\unzipper.ps1
 
 :: Runs Unzipper ::
-powershell.exe -File "%file_dir%\%add_dir%\unzipper.ps1"
+powershell.exe -File "%~dp0\%unzip_add_dir%\unzipper.ps1"
 
 :: Deletes Temporary Files ::
-del /F /Q "%file_dir%\%add_dir%\unzipper.ps1"
+del /F /Q "%~dp0\%unzip_add_dir%\unzipper.ps1"
 
-rd /s /q "%file_dir%\%add_dir%"
+rd /s /q "%~dp0\%unzip_add_dir%"
 
 :: End of File ::
 :eof
