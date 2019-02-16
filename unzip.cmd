@@ -47,12 +47,12 @@ md "%~dp0\%unzip_add_dir%" >nul
 echo expand-archive -path '%unzip_zip%' -destinationpath '%unzip_dest%' -Force > "%~dp0\%unzip_add_dir%\unzipper.ps1"
 
 :: Runs Unzipper ::
-powershell.exe -File "%~dp0\%unzip_add_dir%\unzipper.ps1"
+powershell.exe -File "%~dp0\%unzip_add_dir%\unzipper.ps1" >nul
 
 :: Deletes Temporary Files ::
-del /F /Q "%~dp0\%unzip_add_dir%\unzipper.ps1"
+del /F /Q "%~dp0\%unzip_add_dir%\unzipper.ps1" >nul
 
-rd /s /q "%~dp0\%unzip_add_dir%"
+rd /s /q "%~dp0\%unzip_add_dir%" >nul
 
 :: End of File ::
 :eof
