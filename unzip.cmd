@@ -8,7 +8,7 @@ set unzip_add_dir=%random%
 powershell.exe Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Unrestricted -Force;
 
 :: Checks whether or not arguments were given ::
-IF [%1] == [] (
+IF [%~1] == [] (
 	echo Format:
 	echo.
 	echo "path\unzip.cmd" "zip_file_path" "destination"
@@ -17,7 +17,7 @@ IF [%1] == [] (
 	goto :eof
 )
 
-IF [%2] == [] (
+IF [%~2] == [] (
 	echo Format:
 	echo.
 	echo "path\unzip.cmd" "zip_file_path" "destination"
@@ -27,8 +27,8 @@ IF [%2] == [] (
 )
 
 :: Gets given arguments ::
-set unzip_zip=%1
-set unzip_dest=%2
+set unzip_zip=%~1
+set unzip_dest=%~2
 
 :: Removing Single and Double Quotes from unzip_zip parameter ::
 set unzip_zip=%unzip_zip:'=%
